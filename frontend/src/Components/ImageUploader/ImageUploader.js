@@ -5,17 +5,18 @@ import axios from 'axios';
 
 function ImageUploader(props) {
   const [storedPicture, setStoredPicture] = useState();
+  const [isLoading, setIsLoading] = useState();
   const [storedPicturePreview, setStoredPicturePreview] = useState();
 
-  const handleChange = (e) =>{
-    console.log(e.target.files);
-    if(e.target.files[0]){
-      setStoredPicture(e.target.files[0]);
-      setStoredPicturePreview(URL.createObjectURL(e.target.files[0]))
+  // const handleChange = (e) =>{
+  //   console.log(e.target.files);
+  //   if(e.target.files[0]){
+  //     setStoredPicture(e.target.files[0]);
+  //     setStoredPicturePreview(URL.createObjectURL(e.target.files[0]))
       
-    }
+  //   }
 
-  }
+  // }
   
   const onFileUpload = () =>{
         // Create an object of formData
@@ -23,7 +24,7 @@ function ImageUploader(props) {
   
         // Update the formData object
         formData.append(
-          "myFile",
+          "image",
           storedPicture,
           storedPicture.name
         );
@@ -33,7 +34,12 @@ function ImageUploader(props) {
       
         // Request made to the backend api
         // Send formData object
-        axios.post("api/uploadfile", formData);
+        setIsLoading(true);
+        axios.post("http://localhost:2000/upload", formData).then((response)=>{
+          console.log(response);
+          setIsLoading(false);
+        })
+        //Set to loading
     
   }
 
@@ -52,21 +58,29 @@ function ImageUploader(props) {
   const fileDrop = (e) => {
       e.preventDefault();
       const files = e.dataTransfer.files;
+      setStoredPicture(files[0]);
+      setStoredPicturePreview(URL.createObjectURL(files[0]))
+
       console.log(files);
   }
 
   return (
+
     <div className="container">
-      {storedPicturePreview && <img id="thumb" className="thumb"src={storedPicturePreview} alt="your preview" /> }
-      <input type='file' onChange={handleChange} />
-      <button onClick={onFileUpload}>Upload</button>
+      {isLoading && 
+        <div>
+          LOADING
+        </div>}
       <div className="drop-container"
           onDragOver={dragOver}
           onDragEnter={dragEnter}
           onDragLeave={dragLeave}
           onDrop={fileDrop}
       >
+        {storedPicturePreview && <img id="thumb" className="thumb"src={storedPicturePreview} alt="your preview" /> }
       </div>
+      <button onClick={onFileUpload}>Upload</button>
+
     </div>
   );
 }

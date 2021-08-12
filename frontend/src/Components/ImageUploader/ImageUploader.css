@@ -9,18 +9,13 @@
     display: inline-flex;
     border-radius: 2px;
     border: 1px solid #eaeaea;
-    margin-bottom: 8px;
-    margin-right: 8px;
     width: 300px;
     height: 300px;
-    padding: 4px;
     box-sizing: border-box;
+    object-fit: cover;
 }
 
 
-.container {
-    transform: translateY(-100%);
-}
 
 .container p {
     color: red;
@@ -32,7 +27,7 @@
     align-items: center;
     justify-content: center;
     margin: 0;
-    width: 800px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     border: 4px dashed #4aa1f3;
 }
