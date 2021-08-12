@@ -4,15 +4,15 @@ const app = express();
 var multer = require('multer');
 var cors = require('cors')
 app.use(cors())
-const port = 2000;
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
 var path = require('path')
 
-app.listen(port, ()=>{
-    console.log('We are live on ' + port);
+app.listen(process.env.PORT || 2000, ()=>{
+    console.log('We are live on ' + process.env.PORT);
 });
 
 var storage = multer.diskStorage({

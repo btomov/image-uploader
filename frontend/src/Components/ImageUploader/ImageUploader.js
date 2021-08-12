@@ -35,7 +35,7 @@ function ImageUploader(props) {
         // Request made to the backend api
         // Send formData object
         setIsLoading(true);
-        axios.post("http://localhost:2000/upload", formData).then((response)=>{
+        axios.post("https://image-uploader-backend1.herokuapp.com/upload", formData).then((response)=>{
           console.log(response);
           setIsLoading(false);
         })
