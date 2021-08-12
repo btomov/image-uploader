@@ -4,8 +4,9 @@ import MainCard from './Components/MainCard/MainCard'
 
 function App() {
   return (
-    <div>
-        <p className="title">React Drag and Drop Image Upload</p>
+    <div className="main-card">
+        <h1 className="title">Upload your image</h1>
+        <p>File should be Jpeg, Png,...</p>
         <div className="content">
           <ImageUploader />
         </div>
