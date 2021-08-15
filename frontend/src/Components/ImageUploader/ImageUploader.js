@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./ImageUploader.css";
 import axios from "axios";
 import PlaceholderImg from "../../image.svg";
@@ -16,7 +16,7 @@ function ImageUploader (props) {
 		// Request made to the backend api
 		// Send formData object
 		axios
-			.post("http://localhost:2000/upload", formData)
+			.post("https://image-uploader-backend1.herokuapp.com//upload", formData)
 			.then((response) => {
 				console.log(response);
 				setTimeout(function(){
