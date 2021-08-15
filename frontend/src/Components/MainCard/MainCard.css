@@ -1,10 +1,48 @@
 .mainCard{
-    border: 1px solid black;
+    width: 402px;
+    height: 469px;
+    margin: 200px auto;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
-    max-width: 500px;
-    margin: 300px auto;
-    min-height:500px;
     display:flex;
     flex-direction: column;
-    align-items: center;
 }
+
+.sub-title {
+    font-size: 1rem;
+    text-align: center !important;
+    /* margin-top: 2%; */
+    margin-bottom:10%;
+    font-weight: bold;
+    /* font-family: Poppins; */
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 15px;
+  }
+
+  .upload-completed-div{
+    display: flex;
+    flex-direction: column;
+  }
+  .ready-icon{
+      align-self:center;
+  }
+
+  .uploaded-link{
+    padding:10px;
+    background: #F6F8FB;
+    /* Gray 5 */
+
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    border-radius: 8px;
+    width: 260px;
+  }
+
+  .upload-completed-copy-div{
+    margin-top: 26px;
+    align-self:center;
+    min-width:200px;
+  }
