@@ -7,6 +7,12 @@ app.use(cors())
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+var fs = require('fs');
+var dir = './upload';
+
+if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+}
 
 
 var path = require('path')
