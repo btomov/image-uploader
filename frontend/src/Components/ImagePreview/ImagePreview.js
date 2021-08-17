@@ -7,7 +7,8 @@ function ImagePreview(props) {
                 <img
                     id="thumb"
                     className="thumb"
-                    src={props.storedPicturePreview}
+                    // src={props.storedPicturePreview}
+                    src='https://i.imgur.com/avAmUtJ.jpg'
                     alt="your preview"
                 />
             )}

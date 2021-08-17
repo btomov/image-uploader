@@ -4,7 +4,6 @@ import axios from "axios";
 import PlaceholderImg from "../../image.svg";
 
 function ImageUploader (props) {
-
 	const onFileUpload = (image) => {
 		// Create an object of formData
 		const formData = new FormData();
@@ -16,13 +15,13 @@ function ImageUploader (props) {
 		// Request made to the backend api
 		// Send formData object
 		axios
-			.post("https://image-uploader-backend1.herokuapp.com//upload", formData)
+			.post("https://api.imgur.com/3/image/", formData, {
+				headers: { Authorization: "Client-ID 7e5c728ed16ed17" }
+			})
 			.then((response) => {
 				console.log(response);
-				setTimeout(function(){
-					props.onSetLoading(false);
-
-				}, 1000)
+				props.onSetLoading(false);
+				props.onSetPreview(response.data.data.link);
 			});
 	};
 
@@ -36,12 +35,16 @@ function ImageUploader (props) {
 		onFileUpload(files[0]);
 		props.onSetPreview(files[0]);
 
-		console.log(files[0], ' files 0');
+		console.log(files[0], " files 0");
+	};
+
+	
+	const fileChange = (e) => {
+		console.log(e.target.files[0], ' filechange')
 	};
 
 	return (
 		<React.Fragment>
-      
 			<div className="container">
 				<div
 					className="drop-container"
@@ -58,9 +61,10 @@ function ImageUploader (props) {
 					<p>Drag & Drop your image here</p>
 				</div>
 				<p>Or</p>
-				<span className="submit-button" onClick={onFileUpload}>
+				<input type="file" onChange={ (e) => fileChange(e)} id="file"/>
+				{/* <span className="submit-button" onClick={onFileUpload}>
 					Choose a file
-				</span>
+				</span> */}
 			</div>
 		</React.Fragment>
 	);

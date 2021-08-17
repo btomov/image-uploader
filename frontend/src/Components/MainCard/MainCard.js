@@ -6,7 +6,7 @@ import ReadyIcon from "../../check.svg";
 import Loader from "react-loader-spinner";
 
 function MainCard (props) {
-	const [ storedPicturePreview, setStoredPicturePreview ] = useState("");
+	const [ storedPicturePreview, setStoredPicturePreview ] = useState();
 	const [ isLoading, setIsLoading ] = useState(false);
 	const inputEl = useRef();
 
@@ -17,8 +17,12 @@ function MainCard (props) {
 
 	const setPreview = (preview) => {
 		console.log(preview, " preview");
-		setStoredPicturePreview(URL.createObjectURL(preview));
-		console.log(typeof URL.createObjectURL(preview), " url");
+		// if(!storedPicturePreview !== undefined){
+		// 	console.log('running this ', storedPicturePreview)
+		// 	setStoredPicturePreview(URL.createObjectURL(preview));
+		// }else{
+			setStoredPicturePreview(preview);
+		//}
 	};
 
 	const copyToClipboard = () => {
@@ -60,10 +64,6 @@ function MainCard (props) {
 					/>
 				</div>
 			)}
-			{/* {!isLoading &&
-			props.storedPicturePreview && (
-				
-			)} */}
 			{!isLoading &&
 			storedPicturePreview && (
 				<div className="upload-completed-div">
